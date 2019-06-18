@@ -2,12 +2,14 @@
 
 PKGDIR=~/dev/pkg
 cd $PKGDIR || exit 1
-rm -Rf $*
-asp update $*
-asp checkout $*
+rm -Rf "$@"
+asp update "$@"
+asp checkout "$@"
 
-for pkg in $*
+for pkg in "$@"
 do
-    cd $PKGDIR/"$pkg"/trunk || exit 2
-    makepkg -sCf --noconfirm PKGDEST="$(realpath ..)"
+	mkdir -p "$pkg-src"
+	SRCDEST="$(realpath "$pkg-src")"
+	cd $PKGDIR/"$pkg"/trunk || exit 2
+	makepkg -sCf --noconfirm PKGDEST="$(realpath ..)" SRCDEST="$SRCDEST"
 done
