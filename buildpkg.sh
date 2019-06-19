@@ -8,8 +8,9 @@ asp checkout "$@"
 
 for pkg in "$@"
 do
-	mkdir -p "$pkg-src"
+	cd $PKGDIR || exit 1
+	mkdir -pv "$pkg-src"
 	SRCDEST="$(realpath "$pkg-src")"
-	cd $PKGDIR/"$pkg"/trunk || exit 2
+	cd "$pkg"/trunk || exit 2
 	makepkg -sCf --noconfirm PKGDEST="$(realpath ..)" SRCDEST="$SRCDEST"
 done
