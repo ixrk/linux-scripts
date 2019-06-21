@@ -2,9 +2,9 @@
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-if [ -f "$XDG_DATA_HOME/emoji" ]
+if [ -f "$HOME/.local/share/emoji" ]
 then
-	EMOJI_SRC="$XDG_DATA_HOME"
+	EMOJI_SRC="$HOME/.local/share/emoji"
 elif [ -f "$SCRIPT_DIR/emoji" ]
 then
 	EMOJI_SRC="$SCRIPT_DIR/emoji"
