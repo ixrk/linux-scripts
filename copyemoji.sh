@@ -16,8 +16,7 @@ else
 	exit 2
 fi
 
-SELECTED=$(cat "$EMOJI_SRC" | dmenu -i -l 15 -fn "Symbola-16") || exit 1
-EMOJI=$(echo $SELECTED | awk '{print $1}')
+SELECTED=$(dmenu -i -l 15 -fn "Symbola-16" < $EMOJI_SRC) || exit 1
 
-echo $EMOJI | tr -d '\n' | xclip -selection clipboard &&
+echo "$SELECTED" | awk '{print $1}' | xclip -selection clipboard &&
 notify-send "Emoji copied to clipboard" "$SELECTED"
