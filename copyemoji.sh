@@ -18,5 +18,5 @@ fi
 
 SELECTED=$(dmenu -i -l 15 -fn "Symbola-16" < $EMOJI_SRC) || exit 1
 
-echo "$SELECTED" | awk '{print $1}' | xclip -selection clipboard &&
+echo "$SELECTED" | awk '{print $1}' | tr -d '\n' | xclip -selection clipboard &&
 notify-send "Emoji copied to clipboard" "$SELECTED"
