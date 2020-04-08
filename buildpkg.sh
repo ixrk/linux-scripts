@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PKGDIR=~/dev/pkg
+PKGDIR=~/devel/pkg
 cd $PKGDIR || exit 1
 rm -Rf "$@"
 asp update "$@"
